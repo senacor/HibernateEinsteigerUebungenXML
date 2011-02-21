@@ -64,7 +64,7 @@ public class TestTeil5 extends DBTestCase {
     public void testGroupBy() {
         Session s = sf.getCurrentSession();
         Transaction t = s.beginTransaction();
-        Query q = s.createQuery("select new QuerySummary(p.adresse.stadt, count(p)) from Person p group by p.adresse.stadt");
+        Query q = s.createQuery("select p.adresse.stadt, count(p) from Person p group by p.adresse.stadt");
         for(Object o : q.list()) {
             Object[] arr = (Object[])o;
             System.out.println(arr[0] + " - " + arr[1]);
