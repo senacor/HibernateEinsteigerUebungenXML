@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.senacor.schulung.hibernate.domain">
+    <class name="Foto" table="FOTOS">
+        <id name="id" column="FOTO_ID">
+            <generator class="sequence"/>
+        </id>
+        <property name="titel" column="FOTO_TITEL"/>
+        <property name="pfad" column="FOTO_PFAD"/>
+        <many-to-one name="owner" class="Person" column="FOTO_PERS_ID" not-null="false"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.senacor.schulung.hibernate.domain">
+    <class name="ZahlungsartJoinedSubclass" table="TABLE_SUBCLASS_ZAHLUNGSART">
+        <id name="id" column="ZA_ID">
+            <generator class="sequence"/>
+        </id>
+        <property name="eigentuemer" column="ZA_EIGENTUEMER"/>
+        <joined-subclass name="LastschriftJoinedSubclass" table="TABLE_SUBCLASS_LASTSCHRIFT">
+            <key column="LAST_ID"/>
+            <property name="kontoNummer" column="LAST_KTO_NR"/>
+            <property name="blz" column="LAST_BLZ"/>
+            <property name="bank" column="LAST_BANK"/>
+        </joined-subclass>
+        <joined-subclass name="KreditkarteJoinedSubclass" table="TABLE_SUBCLASS_KREDITKARTE">
+            <key column="KK_ID"/>
+            <property name="nummer" column="KK_NUMMER"/>
+            <property name="gueltigBis" column="KK_GUELTIG_BIS" type="date"/>
+        </joined-subclass>
+    </class>
+</hibernate-mapping>

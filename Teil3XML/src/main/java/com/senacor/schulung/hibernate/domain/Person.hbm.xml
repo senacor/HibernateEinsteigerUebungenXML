@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.senacor.schulung.hibernate.domain">
+    <class name="Person" table="PERSONEN">
+        <id name="id" column="PERS_ID">
+            <generator class="sequence"/>
+        </id>
+        <property name="vorname" column="PERS_VORNAME"/>
+        <property name="nachname" column="PERS_NACHNAME"/>
+        <property name="username" column="PERS_USERNAME"/>
+        <component name="adresse" class="Adresse">
+            <property name="strasse" column="PERS_ADR_STRASSE"/>
+            <property name="plz" column="PERS_ADR_PLZ"/>
+            <property name="stadt" column="PERS_ADR_STADT"/>
+        </component>
+        <!--
+            TODO: Relation zu Fotos (to-many) einfügen
+        -->
+    </class>
+</hibernate-mapping>

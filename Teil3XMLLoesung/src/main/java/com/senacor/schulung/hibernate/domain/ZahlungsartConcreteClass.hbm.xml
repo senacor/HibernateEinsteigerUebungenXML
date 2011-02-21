@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.senacor.schulung.hibernate.domain">
+    <class name="ZahlungsartConcreteClass">
+        <id name="id" column="ZA_ID">
+            <generator class="sequence"/>
+        </id>
+        <property name="eigentuemer" column="ZA_EIGENTUEMER"/>
+        <union-subclass name="LastschriftConcreteClass" table="TABLE_CONCRETE_CLASS_LASTSCHRIFT">
+            <property name="kontoNummer" column="LAST_KTO_NR"/>
+            <property name="blz" column="LAST_BLZ"/>
+            <property name="bank" column="LAST_BANK"/>
+        </union-subclass>
+        <union-subclass name="KreditkarteConcreteClass" table="TABLE_CONCRETE_CLASS_KREDITKARTE">
+            <property name="nummer" column="KK_NUMMER"/>
+            <property name="gueltigBis" column="KK_GUELTIG_BIS" type="date"/>
+        </union-subclass>
+    </class>
+</hibernate-mapping>

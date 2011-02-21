@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.senacor.schulung.hibernate.domain">
+    <class name="ZahlungsartClassHierarchy" table="TABLE_CLASS_HIERARCHY_ZAHLUNGSARTEN">
+        <id name="id" column="ZA_ID">
+            <generator class="sequence"/>
+        </id>
+        <discriminator column="ZA_TYP" type="string"/>
+        <property name="eigentuemer" column="ZA_EIGENTUEMER"/>
+        
+        <subclass name="LastschriftClassHierarchy" discriminator-value="LASTSCHRIFT">
+            <property name="kontoNummer" column="ZA_LAST_KTO_NR"/>
+            <property name="blz" column="ZA_LAST_BLZ"/>
+            <property name="bank" column="ZA_LAST_BANK"/>
+        </subclass>
+        <subclass name="KreditkarteClassHierarchy" discriminator-value="KREDITKARTE">
+            <property name="nummer" column="ZA_KK_NUMMER"/>
+            <property name="gueltigBis" column="ZA_KK_GUELTIG_BIS" type="date"/>
+        </subclass>
+    </class>
+</hibernate-mapping>
