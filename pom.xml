@@ -125,6 +125,25 @@
                     <target>1.5</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>hibernate3-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <componentProperties>
+                        <outputfilename>schema.sql</outputfilename>
+                    </componentProperties>
+
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>hsqldb</groupId>
+                        <artifactId>hsqldb</artifactId>
+                        <version>1.8.0.10</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
         </plugins>
     </build>
     
